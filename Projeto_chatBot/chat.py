@@ -1,6 +1,6 @@
 import streamlit as st
 import time
-from Projeto_chatBot.Envio_gmail import enviar_email
+from Envio_gmail import enviar_email
 from streamlit_autorefresh import st_autorefresh
 
 st.title("Recebimento de Pagamento")
