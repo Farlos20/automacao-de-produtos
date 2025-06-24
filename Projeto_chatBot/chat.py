@@ -2,7 +2,7 @@ import streamlit as st
 import time
 from Envio_gmail import enviar_email
 from streamlit_autorefresh import st_autorefresh
-
+#Correto
 st.title("Recebimento de Pagamento")
 st.write("Siga os passos para receber seu salário:")
 
