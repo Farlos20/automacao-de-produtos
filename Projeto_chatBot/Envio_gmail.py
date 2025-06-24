@@ -1,7 +1,7 @@
 # Bibliotecas
 import smtplib
 import email.message
-from Projeto_chatBot import config
+
 
 def enviar_email(email_destino):  
     corpo_email = """
