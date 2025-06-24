@@ -1,0 +1,44 @@
+import streamlit as st
+from time import sleep
+from Projeto_chatBot import config
+from Projeto_chatBot.Envio_gmail import enviar_email  # importe uma vez no começo
+
+# título e instruções
+st.title("Recebimento de Pagamento")
+st.write("Siga os seguintes passos para receber seu salario ---> \n")
+
+# inicializa variáveis na sessão
+if "nome" not in st.session_state:
+    st.session_state.nome = ""
+if "email" not in st.session_state:
+    st.session_state.email = ""
+if "mensagem" not in st.session_state:
+    st.session_state.mensagem = []
+
+# captura nome se ainda não foi preenchido
+if not st.session_state.nome:
+    nome = st.text_input("Informe seu nome completo:", key="nome_input")
+    if nome:
+        st.session_state.nome = nome
+        st.session_state.mensagem.append({"role": "user", "content": nome})
+        st.session_state.mensagem.append({"role": "assistant", "content": f"{nome}, então este é seu nome. Perfeito!"})
+        st.experimental_singleton.clear()
+
+# se nome já está preenchido, captura email
+elif not st.session_state.email:
+    st.write("Agora digite corretamente seu Email (Gmail) !! Verifique se está correto antes do envio")
+    email = st.text_input("Informe seu email:", key="email_input")
+    if email:
+        st.session_state.email = email
+        st.session_state.mensagem.append({"role": "user", "content": email})
+        st.session_state.mensagem.append({"role": "assistant", "content": "Ótimo, agora para verificar consulte seu email."})
+
+# exibe mensagens do chat
+for msg in st.session_state.mensagem:
+    with st.chat_message(msg["role"]):
+        st.write(msg["content"])
+
+# **CHAMADA DA FUNÇÃO APENAS SE OS DADOS ESTIVEREM PRONTOS**
+if st.session_state.nome and st.session_state.email:
+    enviar_email(st.session_state.email)  # chama passando o email do usuário
+    st.write("Email enviado!")

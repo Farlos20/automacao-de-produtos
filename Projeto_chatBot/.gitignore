@@ -1,0 +1,8 @@
+# Ignorar arquivos e pastas grandes e temporárias
+dist/
+build/
+__pycache__/
+*.spec
+*.pyc
+*.pyo
+*.exe
