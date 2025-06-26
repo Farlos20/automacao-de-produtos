@@ -16,9 +16,9 @@ def enviar_email(email_destino):
 
     msg = email.message.Message()
     msg['Subject'] = "Agradecimento"
-    msg['From'] = 'caerlosfreefire@gmail.com'
+    msg['From'] = 'prosminds.a@gmail.com'
     msg['To'] = email_destino
-    password = 'wzqt dnwa iatc yeqk' 
+    password = 'g c z f u h h v k z x b w s d w' 
     msg.add_header('Content-Type', 'text/html')
     
     # Defina o payload antes de converter para string
